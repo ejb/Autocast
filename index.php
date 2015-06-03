@@ -99,7 +99,7 @@
 			<div class="row">
 				<div class="col-md-12">
 				
-				
+				    <button class="play-button">Start</button>
 				
 				
 				</div>
