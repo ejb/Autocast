@@ -5,6 +5,9 @@
       socialRiser.create();
       
       window.inited = false;
+      setTimeout(function(){
+          $('.main-button').removeClass('init').addClass('paused');
+      },500);
       $('.main-button').click(function(){
           if (!inited) {
               requestArticles();
@@ -34,6 +37,7 @@ function playArticle( index ){
     if (curr === undefined) {
         return;
     }
+    $('.main-button').removeClass('paused').addClass('playing');
     setNowPlaying('HED');
     speakText(curr, function(){
         window.currentArticle += 1;
@@ -63,10 +67,12 @@ function speakText( txt, callback ) {
 
 function pause(){
     window.speechSynthesis.pause();
+    $('.main-button').removeClass('playing').addClass('paused');
 }
 
 function resume(){
     window.speechSynthesis.resume();
+    $('.main-button').removeClass('paused').addClass('playing');
 }
 
 function next(){

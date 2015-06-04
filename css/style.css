@@ -787,6 +787,18 @@ img.interface {
   display: block;
   position: absolute; }
 
+.main-button .symbolHolder {
+  opacity: 0; }
+.main-button .logoBtn {
+  transition: all 0.7s; }
+.main-button.init .logoBtn {
+  opacity: 1;
+  background: white; }
+.main-button.paused .playBtn {
+  opacity: 1; }
+.main-button.playing .pauseBtn {
+  opacity: 1; }
+
 /* - Narrow desktop view - */
 /* - iPad view - */
 /* - Responsive view - */
