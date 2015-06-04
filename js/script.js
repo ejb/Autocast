@@ -88,11 +88,13 @@ function speakText( txt, callback ) {
 
 function pause(){
     window.speechSynthesis.pause();
+    $('.playgif').attr('src','img/sound_static.png');
     $('.main-button').removeClass('playing').addClass('paused');
     console.log('pause');
 }
 
 function resume(){
+    $('.playgif').attr('src','img/sound_gif.gif');
     window.speechSynthesis.resume();
     $('.main-button').removeClass('paused').addClass('playing');
 }
