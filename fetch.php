@@ -4,11 +4,11 @@ $factiva_key = getenv( 'FACTIVA_KEY' );
 $articleRefs = fetchArticleList();
 $articles = [];
 $CharNum = 700;
-foreach ($articleRefs as $index => $article) {
-    cleanArticle( fetchArticle( $article['ref'], $CharNum ) );
-    array_push( $articles, $article );
+foreach ($articleRefs as $index => $ref) {
+    $cleanArticle = cleanArticle( fetchArticle( $ref ), 300 );
+    array_push( $articles, $cleanArticle );
 }
-echo json_encode( $articles );
+file_put_contents( 'cached.json', json_encode( $articles ) );
 
 
 function fetchArticleList(){
@@ -17,7 +17,9 @@ function fetchArticleList(){
 	$days = '1';
 	$search = 'sc%3Awsjo';
 
-	$url = "http://api.dowjones.com/api/public/2.0/content/headlines/json?EncryptedToken=$factiva_key&DaysRange=$days&SearchString=$search";
+	$url = "http://api.dowjones.com/api/public/2.0/content/headlines/json?EncryptedToken=".$factiva_key."&DaysRange=".$days."&SearchString=".$search;
+    
+    echo $url;
 
 	$l = json_decode( file_get_contents( $url ), TRUE );
 	$chunks = ceil ( $l["TotalRecords"] / 100 );
@@ -40,8 +42,7 @@ function fetchArticleList(){
 
 function CleanArticle($Article, $CharNumber) {
 	//We parse the dirty article  
-	$ArticleString = file_get_contents($Article);
-	$ArticleParsed = json_decode($ArticleString, true);
+	$ArticleParsed = $Article;
 
 	//We start with a blank article
 	$CleanArt = "";
@@ -77,7 +78,7 @@ function CleanArticle($Article, $CharNumber) {
 function fetchArticle($ref){
 	global $factiva_key;
 	$url = "http://api.dowjones.com/api/public/2.0/Content/Article/ArticleRef/json?articleRef=$ref&encryptedToken=$factiva_key&ArticleFormat=FULL&Parts=RegionCodes|SubjectCodes|IndustryCodes";
-
+    echo $url;
 	$a = json_decode( file_get_contents( $url ), TRUE);
 
 	return $a;

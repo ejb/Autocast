@@ -17,17 +17,23 @@
 
 function requestArticles(){
     $.getJSON('dummy.json', function(articles) {
-        window.currentArticle = 0;
-        speakText(articles[window.currentArticle], function(){
-            window.currentArticle += 1;
-            if (articles[window.currentArticle]) {
-                speakText(articles[window.currentArticle]);
-            }
-        });
+        window.articles = articles;
+        playArticle(0);
+    });
+}
+
+function playArticle( index ){
+    window.currentArticle = index || window.currentArticle || 0;
+    speakText(articles[window.currentArticle], function(){
+        window.currentArticle += 1;
+        speakText(articles[window.currentArticle]);
     });
 }
 
 function speakText( txt, callback ) {
+    if (!txt) {
+        return;
+    }
     window.speechSynthesis.cancel();
     var msg = new SpeechSynthesisUtterance( txt );
     msg.rate = 1; // 0.1 to 10
@@ -43,3 +49,25 @@ function speakText( txt, callback ) {
         msg.addEventListener("end", callback);
     }
 }
+
+function pause(){
+    window.speechSynthesis.pause();
+}
+
+function resume(){
+    window.speechSynthesis.resume();
+}
+
+function next(){
+    window.currentArticle += 1;
+    playArticle();
+}
+
+function previous(){
+    window.currentArticle -= 1;
+    playArticle();
+}
+
+
+
+
