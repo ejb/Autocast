@@ -54,7 +54,7 @@ function playArticle( index ){
     if (curr.headline && curr.headline.indexOf(';' > -1)) {
         curr.headline = curr.headline.split(';')[0];
     }
-    setNowPlaying(curr.headline);
+    // setNowPlaying(curr.headline);
     
     speakText(curr.cleanText, function(){
         window.currentArticle += 1;
@@ -63,6 +63,7 @@ function playArticle( index ){
 }
 
 function speakText( txt, callback ) {
+    
     if (!txt) {
         return;
     }
