@@ -103,11 +103,14 @@
 			</div><!--row-->
 			<div class="row">
 				<div class="col-md-12">
-					<div class="center-this navlist">
-						<div class="skipForward"></div>
-						<div class="soundOff"></div>
-						<div class="skipBack"></div>
-					</div>
+					<p class="center-text">Title here</p>
+					
+					<div class="navlist">
+							<div class="skipBack"></div>
+							<div class="soundOff"></div>
+							<div class="skipForward"></div>
+						</div>
+					
 				</div>
 			</div><!--row-->
 		</section><?php /* - .container-wide - */ ?>

@@ -733,6 +733,13 @@ img.interface {
   margin: 0px auto;
   display: inline-block; }
 
+.center-text {
+  text-align: center; }
+
+.makeBigger {
+  width: 150%;
+  height: auto; }
+
 .right {
   float: right; }
 
@@ -742,35 +749,35 @@ img.interface {
   background: url("../img/utilities.svg") 0 0; }
 
 .navlist {
-  position: relative; }
+  /*position: relative;*/
+  text-align: center; }
 
 .navlist div {
   margin: 0;
   padding: 0;
-  list-style: none;
-  position: absolute;
-  top: 0; }
+  /*list-style: none;*/
+  /* position: absolute; */
+  /* top: 0; */
+  display: inline-block; }
 
 .navlist div, #navlist a {
-  height: 39px;
-  display: block; }
+  height: 59px;
+  /*display: block;*/ }
 
 .skipBack {
   left: 0px;
-  width: 39px;
+  width: 59px;
   background: url("../img/play_pause_voice.svg") 0 0; }
 
 .skipForward {
-  width: 39px;
-  height: 39px;
-  left: 96px;
-  background: url("../img/play_pause_voice.svg") 0 0; }
+  width: 59px;
+  /* left: 96px; */
+  background: url("../img/play_pause_voice.svg") -147px 0; }
 
 .soundOff {
-  width: 39px;
-  height: 39px;
-  left: 48px;
-  background: url("../img/play_pause_voice.svg") 0 0; }
+  width: 59px;
+  /*left: 48px;*/
+  background: url("../img/play_pause_voice.svg") -72px 0; }
 
 .makeRelative {
   position: relative; }
