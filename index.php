@@ -101,7 +101,7 @@
 					<div class="utilities right"></div>
 					<img class="interface center-this" src="img/circles-04.svg" />
 				
-				
+				    <button class="play-button">Start</button>
 				
 				</div><!--col-md-12-->
 			</div>
