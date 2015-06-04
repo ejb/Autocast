@@ -4,29 +4,40 @@
 
       socialRiser.create();
       
-
-      $('.play-button').click(function(){
-          requestArticles();
+      window.inited = false;
+      $('.main-button').click(function(){
+          if (!inited) {
+              requestArticles();
+          } else if (window.speechSynthesis.paused) {
+              resume();
+          } else {
+              pause();
+          }
       });
       
 
-      var fm = Iframe.init(); // must be at the end of your code
    });
 
 })();
 
 function requestArticles(){
-    $.getJSON('dummy.json', function(articles) {
+    $.getJSON('cached.json', function(articles) {
         window.articles = articles;
         playArticle(0);
+        window.inited = true;
     });
 }
 
 function playArticle( index ){
     window.currentArticle = index || window.currentArticle || 0;
-    speakText(articles[window.currentArticle], function(){
+    var curr = articles[window.currentArticle];
+    if (curr === undefined) {
+        return;
+    }
+    setNowPlaying('HED');
+    speakText(curr, function(){
         window.currentArticle += 1;
-        speakText(articles[window.currentArticle]);
+        playArticle( window.currentArticle );
     });
 }
 
@@ -66,6 +77,10 @@ function next(){
 function previous(){
     window.currentArticle -= 1;
     playArticle();
+}
+
+function setNowPlaying( txt ) {
+    $('.now-playing-title').text( txt );
 }
 
 
