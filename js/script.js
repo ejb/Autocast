@@ -7,7 +7,7 @@
       window.inited = false;
       setTimeout(function(){
           $('.main-button').removeClass('init').addClass('paused');
-      },500);
+      },1000);
       
       $('.main-button').click(function(){
           if (window.inited === false) {
@@ -30,9 +30,9 @@
 
 function requestArticles(){
     $.getJSON('cached.json', function(articles) {
-        // articles.sort(function(a,b){
-        //     return b.score - a.score;
-        // });
+        articles.sort(function(a,b){
+            return b.score - a.score;
+        });
         window.articles = articles;
         playArticle(0);
         window.inited = true;
@@ -41,10 +41,14 @@ function requestArticles(){
 
 function playArticle( index ){
     window.currentArticle = index || window.currentArticle || 0;
+    while (articles[window.currentArticle].headline === null) {
+        window.currentArticle += 1;
+    }
     var curr = articles[window.currentArticle];
     if (curr === undefined) {
         return;
     }
+    console.log(curr, curr.headline);
     $('.main-button').removeClass('paused').addClass('playing');
     console.log(curr.headline);
     if (curr.headline && curr.headline.indexOf(';' > -1)) {

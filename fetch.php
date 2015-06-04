@@ -1,30 +1,36 @@
 <?php
     
+//DUMMY USER PREFERENCES
+$preferences = [];
+
+//Order matters?
+$preferences[] = "Europe";
+$preferences[] = "Political";
+$preferences[] = "FIFA";
+	
+	
+	
 $factiva_key = getenv( 'FACTIVA_KEY' );
 $articleRefs = fetchArticleList();
 $articles = [];
-$CharNum = 700;
+
 foreach ($articleRefs as $index => $ref) {
-    $cleanArticle = cleanArticle( fetchArticle( $ref ) );
+    $cleanArticle = rankArticle( cleanArticle( fetchArticle( $ref )), $preferences );
     array_push( $articles, $cleanArticle );
 }
 file_put_contents( 'cached.json', json_encode( $articles ) );
-
 
 function fetchArticleList(){
 	global $factiva_key;
 	$arefs = [];
 	$days = '1';
 	$search = 'sc%3Awsjo';
-
 	$url = "http://api.dowjones.com/api/public/2.0/content/headlines/json?EncryptedToken=".$factiva_key."&DaysRange=".$days."&SearchString=".$search;
     
     echo $url;
-
 	$l = json_decode( file_get_contents( $url ), TRUE );
 	$chunks = ceil ( $l["TotalRecords"] / 100 );
 	$i = $chunks;
-
 	//handle article list > 100
 	while ($i > 0) {
 	 	$offset = (string)($chunks - $i) * 100;
@@ -35,20 +41,55 @@ function fetchArticleList(){
 	    }
 	 	$i -= 1; 
 	}
-
 	return $arefs; 
     
 }
+function rankArticle ($Article, $preferences) {
+			
+	//Ranking algorithm	
+	$Article["score"] = $Article["words"]/5; 	
+    if ($Article["words"] > 2000) {
+        $Article["score"] = 0;
+    }
+	
+	foreach ($preferences as $pref) {
+		
+		if (array_key_exists("RegionCodes", $Article["tags"])) {
+			foreach ($Article["tags"]["RegionCodes"] as $index => $tags) {			
+				if (strpos($tags["Name"], $pref) !== false)	{
+					$Article["score"] += 100;
+				}			
+			}	
+		}
+		
+		if (array_key_exists("SubjectCodes", $Article["tags"])) {
+			foreach ($Article["tags"]["SubjectCodes"] as $index => $tags) {			
+				if (strpos($tags["Name"], $pref) !== false)	{
+					$Article["score"] += 50;
+				}			
+			}	
+		}
+		
+		if (array_key_exists("IndustryCodes", $Article["tags"])) {
+			foreach ($Article["tags"]["IndustryCodes"] as $index => $tags) {			
+				if (strpos($tags["Name"], $pref) !== false)	{
+					$Article["score"] += 70;
+				}			
+			}	
+		}
+		
+	}
+	
+	return $Article;
+}
 
-function CleanArticle($ArticleParsed) {
 
+
+function cleanArticle($ArticleParsed) {
 	//We start with a blank article
 	$CleanArt = "";
-
 	//We only want the first $numgraf grafs
 	$numgraf = 3;
-	$a = array_slice($ArticleParsed["Articles"][0]["Body"], 0, $numgraf);
-
 	//Check for bad article
     if (!$ArticleParsed["Articles"][0]["Body"]) {
         return array(
@@ -58,8 +99,8 @@ function CleanArticle($ArticleParsed) {
 		"section" => '',
 		"headline" => ''
 		);
-
     }
+	$a = array_slice($ArticleParsed["Articles"][0]["Body"], 0, $numgraf);
 	
 	//We move through each paragraph
 	foreach($a as $index => $ArticlesAux) {
@@ -71,14 +112,11 @@ function CleanArticle($ArticleParsed) {
 	    		$CleanArt .= $val["Name"];
 	    	}
 	    }
-
         //Add a space at the end of each paragraph.
 	    $CleanArt .= " ";        
 	}
     
     //get tags and other fun stuff, put it all in an array	 
-
-	//get tags and other fun stuff, put it all in an array	 
 	$array = array(
 		"cleanText" => $CleanArt,
 		"score" => 0,
@@ -88,22 +126,14 @@ function CleanArticle($ArticleParsed) {
 		"headline" => $ArticleParsed["Articles"][0]["Title"][0]["Items"][0]["Value"]
 		);
 		
-	//Ranking algorithm	
-	$array["score"] = $array["words"]; 	
-
 	//We return the array with the clean text and the tags etc.
 	return $array;
 }
-
-
-
 function fetchArticle($ref){
 	global $factiva_key;
 	$url = "http://api.dowjones.com/api/public/2.0/Content/Article/ArticleRef/json?articleRef=$ref&encryptedToken=$factiva_key&ArticleFormat=FULL&Parts=RegionCodes|SubjectCodes|IndustryCodes";
     echo $url;
 	$a = json_decode( file_get_contents( $url ), TRUE);
-
 	return $a;
 }
-
 ?>
