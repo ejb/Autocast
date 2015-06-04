@@ -51,17 +51,17 @@ function CleanArticle($ArticleParsed) {
 
 	//We move through each paragraph
 	foreach($a as $index => $ArticlesAux) {
-	    $CleanArt .= $ArticlesAux["Items"][0]["Value"]; 
-	        
-	    //We check for errors when the paragraph doesn't end in a full stop
-	     if(substr($CleanArt, -1) != ".") {
-		   //We fix the issues 	        
-		   $CleanArt .= $ArticlesAux["Items"][1]["Name"];
-		   $CleanArt .= $ArticlesAux["Items"][2]["Value"];
-	      }
-		 
-             //Add a space at the end of each paragraph.
-	     $CleanArt .= " ";        
+	    foreach($ArticlesAux["Items"] as $val) {
+	    	if($val["Value"]){
+	    		$CleanArt .= $val["Value"];
+	    	}
+	    	elseif ($val["Name"]) {
+	    		$CleanArt .= $val["Name"];
+	    	}
+	    }
+
+        //Add a space at the end of each paragraph.
+	    $CleanArt .= " ";        
 	}
     
     //get tags and other fun stuff, put it all in an array	 
