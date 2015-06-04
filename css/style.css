@@ -736,6 +736,9 @@ img.interface {
 .center-text {
   text-align: center; }
 
+.tight-lines {
+  line-height: 1.4em; }
+
 .makeBigger {
   width: 150%;
   height: auto; }
@@ -745,8 +748,7 @@ img.interface {
 
 .utilities {
   width: 31px;
-  height: 31px;
-  background: url("../img/utilities.svg") 0 0; }
+  height: 31px; }
 
 .navlist {
   /*position: relative;*/
@@ -761,23 +763,32 @@ img.interface {
   display: inline-block; }
 
 .navlist div, #navlist a {
-  height: 59px;
+  height: 82px;
   /*display: block;*/ }
 
 .skipBack {
   left: 0px;
-  width: 59px;
-  background: url("../img/play_pause_voice.svg") 0 0; }
+  width: 90px;
+  background: url("../img/play_pause_voice.svg") 0 0;
+  background-repeat: no-repeat; }
 
 .skipForward {
-  width: 59px;
+  width: 90px;
   /* left: 96px; */
-  background: url("../img/play_pause_voice.svg") -147px 0; }
+  background: url("../img/play_pause_voice.svg") -206px 0;
+  background-repeat: no-repeat; }
+
+.gray {
+  opacity: .5;
+  margin-top: 10px;
+  padding-top: 5px;
+  border-top: 1px dotted black; }
 
 .soundOff {
-  width: 59px;
+  width: 90px;
   /*left: 48px;*/
-  background: url("../img/play_pause_voice.svg") -72px 0; }
+  background: url("../img/play_pause_voice.svg") -101px 0;
+  background-repeat: no-repeat; }
 
 .makeRelative {
   position: relative; }
@@ -805,6 +816,12 @@ img.interface {
   opacity: 1; }
 .main-button.playing .pauseBtn {
   opacity: 1; }
+
+h1 {
+  margin-top: 20px;
+  margin-bottom: -10px;
+  text-align: center;
+  font-size: 3em; }
 
 /* - Narrow desktop view - */
 /* - iPad view - */
