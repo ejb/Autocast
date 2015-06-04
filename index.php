@@ -18,7 +18,7 @@
 	<meta charset="utf-8"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 
-	<title>WSJ newsHACK 7 untitled hack</title>
+	<title>DriveTime</title>
 
 	<link rel="shortcut icon" href="http://si.wsj.net/favicon.ico"/>
 	<link rel="apple-touch-icon" href="http://s.wsj.net/apple-touch-icon.png"/>
@@ -72,16 +72,11 @@
 
 </head>
 
-<body class="" onunload="pause()">
+<body class="" onunload="window.speechSynthesis.cancel()">
 
 	<div id="main-wrapper">
 
-		
-
-		
-
-		
-
+        <h1>DriveTime</h1>
 
 		<section class="container container-wide">
 			<div class="row">
@@ -104,15 +99,17 @@
 			<div class="row">
 				<div class="col-md-12">
 
-					<p class="center-text now-playing-title">Title here herehere hereherehere hereherehere xhere here</p>
 					
 					<div class="navlist">
 							<div class="skipBack"></div>
 							<div class="soundOff"></div>
 							<div class="skipForward"></div>
 						</div>
-					
 
+					<p class="center-text now-playing-title">Title here</p>
+					
+                    <p>Note: This demo only works correctly on iOS Safari. <a href="https://github.com/ejb/DriveTime">Fork it on GitHub!</a></p>
+                    
 				</div>
 			</div><!--row-->
 		</section><?php /* - .container-wide - */ ?>
