@@ -17,7 +17,11 @@ img.interface {
 
 .center-text {
     text-align: center;
-      line-height: 1.4em;
+      
+}
+
+.tight-lines{
+    line-height: 1.4em;
 }
 .makeBigger{
     width:150%;
@@ -67,6 +71,12 @@ img.interface {
     background: url("../img/play_pause_voice.svg") -206px 0;
 }
 
+.gray{
+    opacity:.5;
+    margin-top:10px;
+    padding-top:5px;
+    border-top: 1px dotted black;
+}
 .soundOff{
 	width: 82px;
     /*left: 48px;*/
