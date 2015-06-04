@@ -83,7 +83,7 @@
 				<div class="col-md-12 makeRelative main-button init">
 					<div class="utilities right"></div>
 
-					<img class="interface center-this" src="img/circles-04.svg" />
+					<img class="interface center-this" src="img/sound_gif.gif" />
 					<div class="symbolHolder playBtn">
 						<img class="buttonSymbols" src="img/play.svg" />
 					</div>

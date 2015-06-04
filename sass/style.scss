@@ -51,26 +51,26 @@ img.interface {
 }
 
 .navlist div, #navlist a {
-    height: 59px;
+    height: 82px;
     /*display: block;*/
 }
 
 .skipBack{
 	left: 0px;
-    width: 59px;
+    width: 82px;
     background: url("../img/play_pause_voice.svg") 0 0;
 }
 
 .skipForward {
-	width: 59px;
+	width: 82px;
     /* left: 96px; */
-    background: url("../img/play_pause_voice.svg") -147px 0;
+    background: url("../img/play_pause_voice.svg") -206px 0;
 }
 
 .soundOff{
-	width: 59px;
+	width: 82px;
     /*left: 48px;*/
-    background: url("../img/play_pause_voice.svg") -72px 0;
+    background: url("../img/play_pause_voice.svg") -101px 0;
 }
 
 .makeRelative{
