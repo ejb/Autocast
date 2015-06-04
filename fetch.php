@@ -78,13 +78,18 @@ function CleanArticle($ArticleParsed) {
     
     //get tags and other fun stuff, put it all in an array	 
 
+	//get tags and other fun stuff, put it all in an array	 
 	$array = array(
 		"cleanText" => $CleanArt,
+		"score" = 0;
 		"tags" => $ArticleParsed["Articles"][0]["MetadataCodes"],
 		"words" => $ArticleParsed["Articles"][0]["WordCount"],
 		"section" => $ArticleParsed["Articles"][0]["Section"],
 		"headline" => $ArticleParsed["Articles"][0]["Title"][0]["Items"][0]["Value"]
 		);
+		
+	//Ranking algorithm	
+	$array["score"] = $array["words"]; 	
 
 	//We return the array with the clean text and the tags etc.
 	return $array;
