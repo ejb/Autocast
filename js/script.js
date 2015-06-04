@@ -8,8 +8,9 @@
       setTimeout(function(){
           $('.main-button').removeClass('init').addClass('paused');
       },500);
+      
       $('.main-button').click(function(){
-          if (!inited) {
+          if (window.inited === false) {
               requestArticles();
           } else if (window.speechSynthesis.paused) {
               resume();
@@ -18,6 +19,10 @@
           }
       });
       
+	  $(".skipBack").click(previous);
+      // $(".soundOff").click();
+	  $(".skipForward").click(next);
+      
 
    });
 
@@ -25,6 +30,9 @@
 
 function requestArticles(){
     $.getJSON('cached.json', function(articles) {
+        // articles.sort(function(a,b){
+        //     return b.score - a.score;
+        // });
         window.articles = articles;
         playArticle(0);
         window.inited = true;
@@ -38,7 +46,11 @@ function playArticle( index ){
         return;
     }
     $('.main-button').removeClass('paused').addClass('playing');
-    setNowPlaying(curr.headline.split(';')[0]);
+    console.log(curr.headline);
+    if (curr.headline && curr.headline.indexOf(';' > -1)) {
+        curr.headline = curr.headline.split(';')[0];
+    }
+    setNowPlaying(curr.headline);
     
     speakText(curr.cleanText, function(){
         window.currentArticle += 1;
@@ -50,8 +62,12 @@ function speakText( txt, callback ) {
     if (!txt) {
         return;
     }
-    window.speechSynthesis.cancel();
-    var msg = new SpeechSynthesisUtterance( txt );
+    console.log(txt);
+    if (window.msg) {
+        window.speechSynthesis.cancel();
+        window.msg.removeEventListener("end");
+    }
+    window.msg = new SpeechSynthesisUtterance( txt );
     msg.rate = 0.9; // 0.1 to 10
     if (navigator.userAgent.match(/(iPad|iPhone|iPod touch)/i)){
         // iPhone speech rate is much faster, for some reason
@@ -69,6 +85,7 @@ function speakText( txt, callback ) {
 function pause(){
     window.speechSynthesis.pause();
     $('.main-button').removeClass('playing').addClass('paused');
+    console.log('pause');
 }
 
 function resume(){
@@ -77,11 +94,13 @@ function resume(){
 }
 
 function next(){
+    window.speechSynthesis.cancel();
     window.currentArticle += 1;
     playArticle();
 }
 
 function previous(){
+    window.speechSynthesis.cancel();
     window.currentArticle -= 1;
     playArticle();
 }

@@ -18,7 +18,7 @@
 	<meta charset="utf-8"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 
-	<title>WSJ newsHACK 7 untitled hack</title>
+	<title>Drivetime</title>
 
 	<link rel="shortcut icon" href="http://si.wsj.net/favicon.ico"/>
 	<link rel="apple-touch-icon" href="http://s.wsj.net/apple-touch-icon.png"/>
@@ -72,7 +72,7 @@
 
 </head>
 
-<body class="" onunload="pause()">
+<body class="" onunload="window.speechSynthesis.cancel()">
 
 	<div id="main-wrapper">
 
@@ -112,6 +112,7 @@
 							<div class="skipForward"></div>
 						</div>
 					
+                    <p>Note: This demo only works correctly on iOS Safari.</p>
 
 				</div>
 			</div><!--row-->
