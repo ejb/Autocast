@@ -75,7 +75,12 @@ function CleanArticle($Article, $CharNumber) {
 
 
 function fetchArticle($ref){
-    
+	global $factiva_key;
+	$url = "http://api.dowjones.com/api/public/2.0/Content/Article/ArticleRef/json?articleRef=$ref&encryptedToken=$factiva_key&ArticleFormat=FULL&Parts=RegionCodes|SubjectCodes|IndustryCodes";
+
+	$a = json_decode( file_get_contents( $url ), TRUE);
+
+	return $a;
 }
 
 ?>
