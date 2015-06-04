@@ -38,8 +38,9 @@ function playArticle( index ){
         return;
     }
     $('.main-button').removeClass('paused').addClass('playing');
-    setNowPlaying('HED');
-    speakText(curr, function(){
+    setNowPlaying(curr.headline.split(';')[0]);
+    
+    speakText(curr.cleanText, function(){
         window.currentArticle += 1;
         playArticle( window.currentArticle );
     });
@@ -51,7 +52,7 @@ function speakText( txt, callback ) {
     }
     window.speechSynthesis.cancel();
     var msg = new SpeechSynthesisUtterance( txt );
-    msg.rate = 1; // 0.1 to 10
+    msg.rate = 0.9; // 0.1 to 10
     if (navigator.userAgent.match(/(iPad|iPhone|iPod touch)/i)){
         // iPhone speech rate is much faster, for some reason
         msg.rate = 0.3;
