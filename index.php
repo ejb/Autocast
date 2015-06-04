@@ -97,14 +97,30 @@
 
 		<section class="container container-wide">
 			<div class="row">
-				<div class="col-md-12">
+				<div class="col-md-12 makeRelative">
 					<div class="utilities right"></div>
 					<img class="interface center-this" src="img/circles-04.svg" />
-				
-				    <button class="play-button">Start</button>
+					<div class="symbolHolder playBtn">
+						<img class="buttonSymbols" src="img/play.svg" />
+					</div>
+					<div class="symbolHolder logoBtn">
+						<img class="buttonSymbols" src="img/logo.svg" />
+					</div>
+					<div class="symbolHolder pauseBtn">
+						<img class="buttonSymbols" src="img/pause.svg" />
+					</div>
 				
 				</div><!--col-md-12-->
-			</div>
+			</div><!--row-->
+			<div class="row">
+				<div class="col-md-12">
+					<div class="center-this navlist">
+						<div class="skipForward"></div>
+						<div class="soundOff"></div>
+						<div class="skipBack"></div>
+					</div>
+				</div>
+			</div><!--row-->
 		</section><?php /* - .container-wide - */ ?>
 
 
