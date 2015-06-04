@@ -40,25 +40,20 @@ function fetchArticleList(){
     
 }
 
-function CleanArticle($Article, $CharNumber) {
-	//We parse the dirty article  
-	$ArticleParsed = $Article;
+function CleanArticle($ArticleParsed) {
 
 	//We start with a blank article
 	$CleanArt = "";
 
+	//We only want the first $numgraf grafs
+	$numgraf = 3;
+	$a = array_slice($ArticleParsed["Articles"][0]["Body"], 0, $numgraf);
+
 	//We move through each paragraph
-	foreach($ArticleParsed["Articles"][0]["Body"] as $index => $ArticlesAux) {
-	    
-	    //We only want the first CharNumber characters or so of the article
-	    if (strlen($CleanArt) < $CharNumber) {
-	           $CleanArt .= $ArticlesAux["Items"][0]["Value"]; 
-	    }
-	    else {
-	        break;
-	    }
-		    
-	     //We check for errors when the paragraph doesn't end in a full stop
+	foreach($a as $index => $ArticlesAux) {
+	    $CleanArt .= $ArticlesAux["Items"][0]["Value"]; 
+	        
+	    //We check for errors when the paragraph doesn't end in a full stop
 	     if(substr($CleanArt, -1) != ".") {
 		   //We fix the issues 	        
 		   $CleanArt .= $ArticlesAux["Items"][1]["Name"];
@@ -67,10 +62,20 @@ function CleanArticle($Article, $CharNumber) {
 		 
              //Add a space at the end of each paragraph.
 	     $CleanArt .= " ";        
-	}  	   
-	
-	//We return a clean article as a string
-	return $CleanArt;
+	}
+    
+    //get tags and other fun stuff, put it all in an array	 
+
+	$array = array(
+		"cleanText" => $CleanArt,
+		"tags" => $ArticleParsed["Articles"][0]["MetadataCodes"],
+		"words" => $ArticleParsed["Articles"][0]["WordCount"],
+		"section" => $ArticleParsed["Articles"][0]["Section"],
+		"headline" => $ArticleParsed["Articles"][0]["Title"][0]["Items"][0]["Value"]
+		);
+
+	//We return the array with the clean text and the tags etc.
+	return $array;
 }
 
 
