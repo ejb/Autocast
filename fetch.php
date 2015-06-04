@@ -5,7 +5,7 @@ $articleRefs = fetchArticleList();
 $articles = [];
 $CharNum = 700;
 foreach ($articleRefs as $index => $ref) {
-    $cleanArticle = cleanArticle( fetchArticle( $ref ), 300 );
+    $cleanArticle = cleanArticle( fetchArticle( $ref ) );
     array_push( $articles, $cleanArticle );
 }
 file_put_contents( 'cached.json', json_encode( $articles ) );
@@ -47,6 +47,16 @@ function CleanArticle($ArticleParsed) {
 
 	//We only want the first $numgraf grafs
 	$numgraf = 3;
+    if (!$ArticleParsed["Articles"][0]["Body"]) {
+        return array(
+		"cleanText" => '',
+		"tags" => [],
+		"words" => 0,
+		"section" => '',
+		"headline" => ''
+		);
+
+    }
 	$a = array_slice($ArticleParsed["Articles"][0]["Body"], 0, $numgraf);
 
 	//We move through each paragraph

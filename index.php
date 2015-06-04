@@ -72,7 +72,7 @@
 
 </head>
 
-<body class="">
+<body class="" onunload="pause()">
 
 	<div id="main-wrapper">
 
@@ -85,7 +85,7 @@
 
 		<section class="container container-wide">
 			<div class="row">
-				<div class="col-md-12 makeRelative">
+				<div class="col-md-12 makeRelative main-button init">
 					<div class="utilities right"></div>
 
 					<img class="interface center-this" src="img/circles-04.svg" />
@@ -108,6 +108,7 @@
 						<div class="soundOff"></div>
 						<div class="skipBack"></div>
 					</div>
+                    <p class="now-playing-title"></p>
 				</div>
 			</div><!--row-->
 		</section><?php /* - .container-wide - */ ?>
@@ -118,7 +119,7 @@
 
 	
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
 	<script src="http://graphics.wsj.com/libs/js/bootstrap/3.2.0/bootstrap.min.js"></script>
 	<script src="http://graphics.wsj.com/libs/js/wsj/jquery.socialriser/1.4.0/jquery.socialriser.min.js"></script>

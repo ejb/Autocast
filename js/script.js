@@ -5,6 +5,9 @@
       socialRiser.create();
       
       window.inited = false;
+      setTimeout(function(){
+          $('.main-button').removeClass('init').addClass('paused');
+      },500);
       $('.main-button').click(function(){
           if (!inited) {
               requestArticles();
@@ -34,8 +37,10 @@ function playArticle( index ){
     if (curr === undefined) {
         return;
     }
-    setNowPlaying('HED');
-    speakText(curr, function(){
+    $('.main-button').removeClass('paused').addClass('playing');
+    setNowPlaying(curr.headline.split(';')[0]);
+    
+    speakText(curr.cleanText, function(){
         window.currentArticle += 1;
         playArticle( window.currentArticle );
     });
@@ -47,7 +52,7 @@ function speakText( txt, callback ) {
     }
     window.speechSynthesis.cancel();
     var msg = new SpeechSynthesisUtterance( txt );
-    msg.rate = 1; // 0.1 to 10
+    msg.rate = 0.9; // 0.1 to 10
     if (navigator.userAgent.match(/(iPad|iPhone|iPod touch)/i)){
         // iPhone speech rate is much faster, for some reason
         msg.rate = 0.3;
@@ -63,10 +68,12 @@ function speakText( txt, callback ) {
 
 function pause(){
     window.speechSynthesis.pause();
+    $('.main-button').removeClass('playing').addClass('paused');
 }
 
 function resume(){
     window.speechSynthesis.resume();
+    $('.main-button').removeClass('paused').addClass('playing');
 }
 
 function next(){
