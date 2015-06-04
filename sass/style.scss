@@ -61,14 +61,16 @@ img.interface {
 
 .skipBack{
 	left: 0px;
-    width: 82px;
+    width: 90px;
     background: url("../img/play_pause_voice.svg") 0 0;
+    background-repeat: no-repeat;
 }
 
 .skipForward {
-	width: 82px;
+	width: 90px;
     /* left: 96px; */
     background: url("../img/play_pause_voice.svg") -206px 0;
+    background-repeat: no-repeat;
 }
 
 .gray{
@@ -78,9 +80,10 @@ img.interface {
     border-top: 1px dotted black;
 }
 .soundOff{
-	width: 82px;
+	width: 90px;
     /*left: 48px;*/
     background: url("../img/play_pause_voice.svg") -101px 0;
+    background-repeat: no-repeat;
 }
 
 .makeRelative{
