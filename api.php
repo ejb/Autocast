@@ -3,8 +3,9 @@
 $factiva_key = getenv( 'FACTIVA_KEY' );
 $articleRefs = fetchArticleList();
 $articles = [];
+$CharNum = 700;
 foreach ($articleRefs as $index => $article) {
-    cleanArticle( fetchArticle( $article['ref'] ) );
+    cleanArticle( fetchArticle( $article['ref'], $CharNum ) );
     array_push( $articles, $article );
 }
 echo json_encode( $articles );
@@ -14,40 +15,41 @@ function fetchArticleList(){
     
 }
 
-function CleanArticle($ArticleList) {
- 
-//We parse the dirty article list 
-$ArticleString = file_get_contents($ArticleList);
-$ArticleParsed = json_decode($ArticleString, true);
-$Articles=$ArticleParsed["$ArticleParsed"][0]["Body"];
+function CleanArticle($Article, $CharNumber) {
+	//We parse the dirty article  
+	$ArticleString = file_get_contents($Article);
+	$ArticleParsed = json_decode($ArticleString, true);
 
-//Array of empty strings where cleaned articles are going to go
-$CleanArticles = array_fill(0,sizeof($Articles),"");
-
-foreach($Articles as $index => $ArticlesAux) {
-	
-	$i=0
-	
-	//Each article starts empty
+	//We start with a blank article
 	$CleanArt = "";
+
+	//We move through each paragraph
+	foreach($ArticleParsed["Articles"][0]["Body"] as $index => $ArticlesAux) {
+	    
+	    //We only want the first CharNumber characters or so of the article
+	    if (strlen($CleanArt) < $CharNumber) {
+	           $CleanArt .= $ArticlesAux["Items"][0]["Value"]; 
+	    }
+	    else {
+	        break;
+	    }
+		    
+	     //We check for errors when the paragraph doesn't end in a full stop
+	     if(substr($CleanArt, -1) != ".") {
+		   //We fix the issues 	        
+		   $CleanArt .= $ArticlesAux["Items"][1]["Name"];
+		   $CleanArt .= $ArticlesAux["Items"][2]["Value"];
+	      }
+		 
+             //Add a space at the end of each paragraph.
+	     $CleanArt .= " ";        
+	}  	   
 	
-	//We fill each article	
-	foreach($ArticlesAux as $index2 => $Art) {
-		
-		//After checking we ended on a full sentence, we only want the first 500 characters or so of each article
-		if (substr($CleanArt, -1) != "." And strlen($CleanArt < 500)) {
-			$CleanArt = $CleanArt . $Art[0]["Items"][0]["Value"];
-		}
-	}
-	
-	//We insert the full article into the right place in the list
-	$CleanArticles[i] = $CleanArticles[i] . $CleanArt;	
+	//We return a clean article as a string
+	return $CleanArt;
 }
 
-//We return an array of cleaned articles
-return $CleanArticles;
 
-}
 
 function fetchArticle($ref){
     
