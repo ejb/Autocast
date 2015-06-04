@@ -103,6 +103,31 @@ img.interface {
 	position:absolute;
 }
 
+.main-button {
+    .symbolHolder {
+        opacity: 0;
+    }
+    .logoBtn {
+        transition: all 0.7s;
+    }
+    &.init {
+        .logoBtn {
+            opacity: 1;
+            background: white;
+        }
+    }
+    &.paused {
+        .playBtn {
+            opacity: 1;
+        }
+    }
+    &.playing {
+        .pauseBtn {
+            opacity: 1;
+        }
+    }
+}
+
 /* - Narrow desktop view - */
 @media screen and (max-width: 991px){
 

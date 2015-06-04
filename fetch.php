@@ -5,7 +5,7 @@ $articleRefs = fetchArticleList();
 $articles = [];
 $CharNum = 700;
 foreach ($articleRefs as $index => $ref) {
-    $cleanArticle = cleanArticle( fetchArticle( $ref ), 300 );
+    $cleanArticle = cleanArticle( fetchArticle( $ref ) );
     array_push( $articles, $cleanArticle );
 }
 file_put_contents( 'cached.json', json_encode( $articles ) );
@@ -40,37 +40,54 @@ function fetchArticleList(){
     
 }
 
-function CleanArticle($Article, $CharNumber) {
-	//We parse the dirty article  
-	$ArticleParsed = $Article;
+function CleanArticle($ArticleParsed) {
 
 	//We start with a blank article
 	$CleanArt = "";
 
-	//We move through each paragraph
-	foreach($ArticleParsed["Articles"][0]["Body"] as $index => $ArticlesAux) {
-	    
-	    //We only want the first CharNumber characters or so of the article
-	    if (strlen($CleanArt) < $CharNumber) {
-	           $CleanArt .= $ArticlesAux["Items"][0]["Value"]; 
-	    }
-	    else {
-	        break;
-	    }
-		    
-	     //We check for errors when the paragraph doesn't end in a full stop
-	     if(substr($CleanArt, -1) != ".") {
-		   //We fix the issues 	        
-		   $CleanArt .= $ArticlesAux["Items"][1]["Name"];
-		   $CleanArt .= $ArticlesAux["Items"][2]["Value"];
-	      }
-		 
-             //Add a space at the end of each paragraph.
-	     $CleanArt .= " ";        
-	}  	   
+	//We only want the first $numgraf grafs
+	$numgraf = 3;
+	$a = array_slice($ArticleParsed["Articles"][0]["Body"], 0, $numgraf);
+
+	//Check for bad article
+    if (!$ArticleParsed["Articles"][0]["Body"]) {
+        return array(
+		"cleanText" => '',
+		"tags" => [],
+		"words" => 0,
+		"section" => '',
+		"headline" => ''
+		);
+
+    }
 	
-	//We return a clean article as a string
-	return $CleanArt;
+	//We move through each paragraph
+	foreach($a as $index => $ArticlesAux) {
+	    foreach($ArticlesAux["Items"] as $val) {
+	    	if($val["Value"]){
+	    		$CleanArt .= $val["Value"];
+	    	}
+	    	elseif ($val["Name"]) {
+	    		$CleanArt .= $val["Name"];
+	    	}
+	    }
+
+        //Add a space at the end of each paragraph.
+	    $CleanArt .= " ";        
+	}
+    
+    //get tags and other fun stuff, put it all in an array	 
+
+	$array = array(
+		"cleanText" => $CleanArt,
+		"tags" => $ArticleParsed["Articles"][0]["MetadataCodes"],
+		"words" => $ArticleParsed["Articles"][0]["WordCount"],
+		"section" => $ArticleParsed["Articles"][0]["Section"],
+		"headline" => $ArticleParsed["Articles"][0]["Title"][0]["Items"][0]["Value"]
+		);
+
+	//We return the array with the clean text and the tags etc.
+	return $array;
 }
 
 
