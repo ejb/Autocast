@@ -7,11 +7,46 @@ $light-blue:#0080c3;
 
 
 
+img.interface {
+	width:100%;
+	height:auto;
+}
 
+.center-this {
+	margin:0px auto;
+	display: inline-block;
+}
 
+.right {
 
+	float:right;
+}
 
+.utilities {
+    width: 31px;
+    height: 31px;
+    background: url('../img/utilities.svg') 0 0;
 
+}
+
+.skipBack{
+	width: 31px;
+    height: 31px;
+    background: url('../img/play_pause_voice.svg') 0 0;	
+}
+
+.skipForward {
+	width: 31px;
+    height: 31px;
+    background: url('../img/play_pause_voice.svg') 0 0;
+}
+
+.soundOff{
+	width: 31px;
+    height: 31px;
+    left:48px;
+    background: url('../img/play_pause_voice.svg') 0 0;
+}
 
 /* - Narrow desktop view - */
 @media screen and (max-width: 991px){

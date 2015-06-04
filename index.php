@@ -98,11 +98,12 @@
 		<section class="container container-wide">
 			<div class="row">
 				<div class="col-md-12">
+					<div class="utilities right"></div>
+					<img class="interface center-this" src="img/circles-04.svg" />
 				
 				
 				
-				
-				</div>
+				</div><!--col-md-12-->
 			</div>
 		</section><?php /* - .container-wide - */ ?>
 

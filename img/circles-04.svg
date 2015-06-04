@@ -4,49 +4,12 @@
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="227.334px" height="227.664px" viewBox="0 0 227.334 227.664" enable-background="new 0 0 227.334 227.664"
 	 xml:space="preserve">
-<symbol  id="Deleted_Symbol" viewBox="-5.5 -8.5 11 17">
-	<path d="M-3.5,6.5h-1v-11h1v1h1v1h1v-1h1v-2h1v-2h2v2h-1v2h-1v2h3v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1v1h-1V6.5z"/>
-	<g>
-		<polygon fill="#FFFFFF" points="5.5,-2.5 5.5,-1.5 4.5,-1.5 4.5,-0.5 3.5,-0.5 3.5,-1.5 0.5,-1.5 0.5,-3.5 1.5,-3.5 1.5,-2.5 		
-			"/>
-		<polygon fill="#FFFFFF" points="1.5,1.5 1.5,2.5 0.5,2.5 0.5,1.5 		"/>
-		<polygon fill="#FFFFFF" points="0.5,2.5 0.5,3.5 -0.5,3.5 -0.5,2.5 		"/>
-		<polygon fill="#FFFFFF" points="-1.5,4.5 -1.5,5.5 -2.5,5.5 -2.5,4.5 		"/>
-		<polygon fill="#FFFFFF" points="-2.5,5.5 -2.5,6.5 -3.5,6.5 -3.5,5.5 		"/>
-		<polygon fill="#FFFFFF" points="-4.5,6.5 -3.5,6.5 -3.5,7.5 -4.5,7.5 -4.5,8.5 -5.5,8.5 -5.5,-6.5 -4.5,-6.5 -4.5,-5.5 -3.5,-5.5 
-			-3.5,-4.5 -4.5,-4.5 		"/>
-		<polygon fill="#FFFFFF" points="-0.5,3.5 -0.5,4.5 -1.5,4.5 -1.5,3.5 		"/>
-		<polygon fill="#FFFFFF" points="-1.5,-3.5 -1.5,-5.5 -0.5,-5.5 -0.5,-3.5 		"/>
-		<polygon fill="#FFFFFF" points="-2.5,-2.5 -2.5,-3.5 -1.5,-3.5 -1.5,-2.5 		"/>
-		<polygon fill="#FFFFFF" points="-3.5,-4.5 -2.5,-4.5 -2.5,-3.5 -3.5,-3.5 		"/>
-		<polygon fill="#FFFFFF" points="3.5,-0.5 3.5,0.5 2.5,0.5 2.5,-0.5 		"/>
-		<polygon fill="#FFFFFF" points="2.5,0.5 2.5,1.5 1.5,1.5 1.5,0.5 		"/>
-		<polygon fill="#FFFFFF" points="2.5,-5.5 2.5,-3.5 1.5,-3.5 1.5,-5.5 		"/>
-		<polygon fill="#FFFFFF" points="0.5,-7.5 0.5,-8.5 3.5,-8.5 3.5,-5.5 2.5,-5.5 2.5,-7.5 		"/>
-		<polygon fill="#FFFFFF" points="-0.5,-5.5 -0.5,-7.5 0.5,-7.5 0.5,-5.5 		"/>
-	</g>
-</symbol>
-<pattern  x="-775.782" y="-421.94" width="8.485" height="8.484" patternUnits="userSpaceOnUse" id="cross_hatching" viewBox="9.547 -18.03 8.485 8.484" overflow="visible">
-	<g>
-		<polygon fill="none" points="9.547,-18.03 18.032,-18.03 18.032,-9.545 9.547,-9.545 		"/>
-		<line fill="none" stroke="#000000" stroke-width="3" x1="18.03" y1="-1.061" x2="26.517" y2="-9.545"/>
-		<line fill="none" stroke="#000000" stroke-width="3" x1="9.546" y1="-1.061" x2="18.032" y2="-9.545"/>
-		<line fill="none" stroke="#000000" stroke-width="3" x1="1.061" y1="-1.061" x2="9.547" y2="-9.545"/>
-		<line fill="none" stroke="#000000" stroke-width="3" x1="18.03" y1="-9.545" x2="26.517" y2="-18.03"/>
-		<line fill="none" stroke="#000000" stroke-width="3" x1="9.546" y1="-9.545" x2="18.032" y2="-18.03"/>
-		<line fill="none" stroke="#000000" stroke-width="3" x1="1.061" y1="-9.545" x2="9.547" y2="-18.03"/>
-		<line fill="none" stroke="#000000" stroke-width="3" x1="18.03" y1="-18.029" x2="26.517" y2="-26.514"/>
-		<line fill="none" stroke="#000000" stroke-width="3" x1="9.546" y1="-18.029" x2="18.032" y2="-26.514"/>
-		<line fill="none" stroke="#000000" stroke-width="3" x1="1.061" y1="-18.029" x2="9.547" y2="-26.514"/>
-	</g>
-</pattern>
-<g id="BACKGROUND">
-</g>
+
+
 <g id="GRAPHICS">
-	<circle fill="none" stroke="#333333" stroke-width="5" stroke-miterlimit="10" cx="113.85" cy="113.316" r="77.325"/>
-	<circle fill="none" stroke="#333333" stroke-width="5" stroke-miterlimit="10" cx="113.85" cy="113.316" r="94.134"/>
-	<circle fill="none" stroke="#333333" stroke-width="5" stroke-miterlimit="10" cx="113.85" cy="113.316" r="110.944"/>
+	<circle class="innerCircle" fill="none" stroke="#333333" stroke-width="5" stroke-miterlimit="10" cx="113.85" cy="113.316" r="77.325"/>
+	<circle class="middleCircle" fill="none" stroke="#333333" stroke-width="5" stroke-miterlimit="10" cx="113.85" cy="113.316" r="94.134"/>
+	<circle class="outerCircle" fill="none" stroke="#333333" stroke-width="5" stroke-miterlimit="10" cx="113.85" cy="113.316" r="110.944"/>
 </g>
-<g id="Layer_13">
-</g>
+
 </svg>
