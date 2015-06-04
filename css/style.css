@@ -745,8 +745,7 @@ img.interface {
 
 .utilities {
   width: 31px;
-  height: 31px;
-  background: url("../img/utilities.svg") 0 0; }
+  height: 31px; }
 
 .navlist {
   /*position: relative;*/
@@ -805,6 +804,12 @@ img.interface {
   opacity: 1; }
 .main-button.playing .pauseBtn {
   opacity: 1; }
+
+h1 {
+  margin-top: 20px;
+  margin-bottom: -10px;
+  text-align: center;
+  font-size: 3em; }
 
 /* - Narrow desktop view - */
 /* - iPad view - */

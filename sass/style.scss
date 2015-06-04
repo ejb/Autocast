@@ -5,8 +5,6 @@ $light-blue:#0080c3;
 /* - Your Styles Here - */
 
 
-
-
 img.interface {
 	width:100%;
 	height:auto;
@@ -33,7 +31,7 @@ img.interface {
 .utilities {
     width: 31px;
     height: 31px;
-    background: url('../img/utilities.svg') 0 0;
+//    background: url('../img/utilities.svg') 0 0;
 
 }
 
@@ -126,6 +124,13 @@ img.interface {
             opacity: 1;
         }
     }
+}
+
+h1 {
+    margin-top: 20px;
+    margin-bottom: -10px;
+    text-align: center;
+    font-size: 3em;
 }
 
 /* - Narrow desktop view - */
