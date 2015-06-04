@@ -47,6 +47,9 @@ function CleanArticle($ArticleParsed) {
 
 	//We only want the first $numgraf grafs
 	$numgraf = 3;
+	$a = array_slice($ArticleParsed["Articles"][0]["Body"], 0, $numgraf);
+
+	//Check for bad article
     if (!$ArticleParsed["Articles"][0]["Body"]) {
         return array(
 		"cleanText" => '',
@@ -57,8 +60,7 @@ function CleanArticle($ArticleParsed) {
 		);
 
     }
-	$a = array_slice($ArticleParsed["Articles"][0]["Body"], 0, $numgraf);
-
+	
 	//We move through each paragraph
 	foreach($a as $index => $ArticlesAux) {
 	    foreach($ArticlesAux["Items"] as $val) {
