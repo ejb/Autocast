@@ -741,21 +741,51 @@ img.interface {
   height: 31px;
   background: url("../img/utilities.svg") 0 0; }
 
+.navlist {
+  position: relative; }
+
+.navlist div {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: absolute;
+  top: 0; }
+
+.navlist div, #navlist a {
+  height: 39px;
+  display: block; }
+
 .skipBack {
-  width: 31px;
-  height: 31px;
+  left: 0px;
+  width: 39px;
   background: url("../img/play_pause_voice.svg") 0 0; }
 
 .skipForward {
-  width: 31px;
-  height: 31px;
+  width: 39px;
+  height: 39px;
+  left: 96px;
   background: url("../img/play_pause_voice.svg") 0 0; }
 
 .soundOff {
-  width: 31px;
-  height: 31px;
+  width: 39px;
+  height: 39px;
   left: 48px;
   background: url("../img/play_pause_voice.svg") 0 0; }
+
+.makeRelative {
+  position: relative; }
+
+.buttonSymbols {
+  width: 100%;
+  height: auto; }
+
+.symbolHolder {
+  left: 33%;
+  top: 37%;
+  width: 33%;
+  height: auto;
+  display: block;
+  position: absolute; }
 
 /* - Narrow desktop view - */
 /* - iPad view - */
