@@ -104,7 +104,7 @@
 			<div class="row">
 				<div class="col-md-12">
 
-					<p class="center-text now-playing-title">Title here</p>
+					<p class="center-text now-playing-title">Title here herehere hereherehere hereherehere xhere here</p>
 					
 					<div class="navlist">
 							<div class="skipBack"></div>

@@ -734,7 +734,8 @@ img.interface {
   display: inline-block; }
 
 .center-text {
-  text-align: center; }
+  text-align: center;
+  line-height: 1.4em; }
 
 .makeBigger {
   width: 150%;
