@@ -15,13 +15,10 @@
 <html lang="en" class="no-js">
 <!--<![endif]-->
 <head>
-	<?php
-		$embed = isset($_GET['embed']) && $_GET['embed'] == 1 ? 'template-embed' : 'template-standalone';
-	?>
 	<meta charset="utf-8"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 
-	<title>Graphic title here - WSJ.com</title><?php /* EDIT ME */ ?>
+	<title>WSJ newsHACK 7 untitled hack</title>
 
 	<link rel="shortcut icon" href="http://si.wsj.net/favicon.ico"/>
 	<link rel="apple-touch-icon" href="http://s.wsj.net/apple-touch-icon.png"/>
@@ -29,9 +26,6 @@
 	<meta name="apple-mobile-web-app-capable" content="yes"/>
 	<meta name="format-detection" content="telephone=no">
 
-	<?php
-		/* - Fill out this meta info - */
-	?>
 			<!-- Meta: URL -->
 			<link rel="canonical" href=""/>
 			<meta property="og:url" content=""/>
@@ -53,12 +47,6 @@
 			<!-- Meta: Keywords -->
 			<meta name="keywords" content=""/>
 			<meta name="news_keywords" content="">
-
-			
-
-	<?php
-		/* - You're all done with meta info - */
-	?>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<meta name="author" content="WSJ.com News Graphics"/>
@@ -84,7 +72,7 @@
 
 </head>
 
-<body class="<?php echo $embed; ?>">
+<body class="">
 
 	<div id="main-wrapper">
 
@@ -99,6 +87,7 @@
 			<div class="row">
 				<div class="col-md-12 makeRelative">
 					<div class="utilities right"></div>
+
 					<img class="interface center-this" src="img/circles-04.svg" />
 					<div class="symbolHolder playBtn">
 						<img class="buttonSymbols" src="img/play.svg" />
@@ -126,18 +115,10 @@
 
 
 
+
 	
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-
-	<script type="text/javascript" src="http://graphics.wsj.com/libs/js/wsj/FrameMessenger/0.0.1/framemessenger.js"></script>
-	<script type="text/javascript"
-          id="framemessenger_graphics"
-          data-frame-name="EDITME"
-          data-root-element="#main-wrapper"
-          src="http://graphics.wsj.com/libs/js/wsj/FrameMessenger/0.0.1/framemessenger_graphics.js"></script>
-
-	
 
 	<script src="http://graphics.wsj.com/libs/js/bootstrap/3.2.0/bootstrap.min.js"></script>
 	<script src="http://graphics.wsj.com/libs/js/wsj/jquery.socialriser/1.4.0/jquery.socialriser.min.js"></script>
